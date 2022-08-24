@@ -32,6 +32,7 @@ public:
 //함수 오버라이딩 가상함수
 //가상함수를 설정하면 그 함수에 대해서는 기존클래스 변수에 유도클래스 변수를 참조하여 가장 마지막에 오버라이딩 할때 유도클래스의 함수를 사용한다. 
 //ex GetPay() 함수 맨 마지막 상속받은 클래스의 오버라이딩 호출
+/*
 class Employee
 {
 private:
@@ -189,8 +190,56 @@ public:
         
     }
 };
-
-
+*/
+//가상 소멸자
+class First
+{
+public:
+    First()
+    {
+        cout << "Frist 생성자" << endl;
+    }
+   virtual ~First()
+    {
+        cout << "First 소멸자" << endl;
+    }
+};
+class Second : public First
+{
+public:
+    Second()
+    {
+        cout << "Second 생성자" << endl;
+    }
+    ~Second()
+    {
+        cout << "Second 소멸자" << endl;
+    }
+};
+class Third : public Second
+{
+public:
+    Third()
+    {
+        cout << "Third 생성자" << endl;
+    }
+    ~Third()
+    {
+        cout << "Third 소멸자" << endl;
+    }
+};
+class Four : public Third
+{
+public:
+    Four()
+    {
+        cout << "Four 생성자" << endl;
+    }
+    ~Four()
+    {
+        cout << "Four 소멸자" << endl;
+    }
+};
 int main()
 {
     //기초 클래스는 유도클래스를 받을 수 있지만 기초클래스 함수만 사용 가능하다.
@@ -205,7 +254,7 @@ int main()
     student->Study();
     */  
     //함수 오버라이딩 가상함수
-    
+    /*
     EmployHandler handler;
     ////직원 등륵
     handler.AddEmployee(new PermanentWorker("KIM", 1000));
@@ -239,6 +288,33 @@ int main()
     handler.ShowAllSalaryInfo();
 
     handler.ShowTotalSalary();
+    */
 
+    // 상위(부모) 클래스* 변수명 = new 하위(자식) 클래스   업캐스팅
+    // 하위(자식) 클래스* 변수명 = new (상위*)하위 클래스   다운캐스팅
+    First* ptr1 = new First();
+    delete ptr1; // First 그대로 자기 원본이기 때문에 문제 x
+    cout << endl;
+    First* ptr2 = new Second();// 업캐스트
+    delete ptr2; //업 캐스팅 해주었기 때문에 First하고 Second를 생성하지만 delete를 해주면 First 상위클래스의 소멸자만 실행
+    //First
+    cout << endl;
+    First* ptr3 = new Third();// 업캐스트
+    delete ptr3; //업 캐스팅 해주었기 때문에 First하고 Second, Third 생성하지만 delete를 해주면 First 상위클래스의 소멸자만 실행
+    cout << endl;
+    // 업 캐스트 의 소멸자 문제를 해결해 주기 위해서는 상위 소멸자에 virtual를 붙여 가상소멸자를 만들어 하위부터 상위클래스까지 순서대로 지우기 가능
+    Third* ptr4 = new Third(); 
+    delete ptr4; //가상 소멸자가 없어도 first second third 소멸자 전부 실행
+    
+
+    cout << "\n\n 테스트 생성" << endl;
+    First* downTest = new Four();
+    cout << "\n\n 다운캐스팅" << endl;
+    Third* ptr5 = (Third*)downTest; // 다운캐스팅은 업캐스팅 된 객체를 자식타입으로 바꾸는것 이기 떄문에 생성자를 호출하지 않는다.
+    cout << endl;
+    cout << "다운캐스팅 소멸" << endl;
+    delete ptr5; 
+    // 다운캐스팅 으로 자식 타입으로 되었기 때문에 First Second Third 소멸자가 모두 작동하다.
+    // 하지만 Third 를 상속받은 객체로 다운캐스팅 할 경우 상속 받은 자식 객체는 삭제되지 않기 때문에 virtual을 이용하여 가상소멸자를 생성하는 것이 좋다.
     std::cout << "\nEnd of Main\n";
 }
