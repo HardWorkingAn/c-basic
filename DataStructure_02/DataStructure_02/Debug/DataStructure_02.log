@@ -1,5 +1,2 @@
 ﻿  DataStructure_02.cpp
-C:\Users\agc78\OneDrive\바탕 화면\c+ basic\DataStructure_02\DataStructure_02\DataStructure_02.cpp(38,3): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\agc78\OneDrive\바탕 화면\c+ basic\DataStructure_02\DataStructure_02\DataStructure_02.cpp(109,3): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\agc78\OneDrive\바탕 화면\c+ basic\DataStructure_02\DataStructure_02\DataStructure_02.cpp(19,9): warning C4101: 'i' :참조되지 않은 지역 변수입니다.
   DataStructure_02.vcxproj -> C:\Users\agc78\OneDrive\바탕 화면\c+ basic\DataStructure_02\Debug\DataStructure_02.exe
