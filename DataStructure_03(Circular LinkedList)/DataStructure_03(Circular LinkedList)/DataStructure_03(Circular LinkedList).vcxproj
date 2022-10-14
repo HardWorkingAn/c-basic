@@ -139,7 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CLinkedList.cpp" />
     <ClCompile Include="DataStructure_03(Circular LinkedList).cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CLinkedList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
