@@ -141,9 +141,11 @@
   <ItemGroup>
     <ClCompile Include="DataStructure_02.cpp" />
     <ClCompile Include="LikedRead.cpp" />
+    <ClCompile Include="Point.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LikedRead.h" />
+    <ClInclude Include="Point.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
