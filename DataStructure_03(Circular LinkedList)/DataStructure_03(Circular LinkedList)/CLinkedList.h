@@ -6,12 +6,11 @@ using namespace std;
 #define  TRUE  1
 #define  FALSE 0
 
-//typedef int Data;
-typedef string Data;
+typedef int Data;
+//typedef string Data; // 05-1 ¹®Á¦
 
 typedef struct _node
 {
-	int empno;
 	Data data;
 	_node* next;
 

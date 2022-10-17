@@ -1,11 +1,13 @@
 ﻿#include <iostream>
-#include "CLinkedList.h" // 에러방지 막음
+//#include "CLinkedList.h"  // 에러 방지용 주석처리 기본 환영 리스트
+#include "doublyLinkedList.h"
 #include <string>
 using namespace std;
 
 int main()
 {
-    /*
+    //기본 환영 연결리스트
+	/*
     List list;
     int data, i, nodeNum;
     
@@ -54,6 +56,9 @@ int main()
 		}
 	}
     */
+
+	//문제 05-1
+	/*
 	List list;
     string data;
 	int i, nodeNum;
@@ -97,6 +102,62 @@ int main()
 		
 	}
 	printf_s("\n");
+	*/
 
-    std::cout << "\nEnd Of Main\n";
+	// 양방향 연결 리스트 
+	List list;
+	int data;
+	DListInit(&list);
+
+	DInsert(&list, 1); DInsert(&list, 2);
+	DInsert(&list, 3); DInsert(&list, 4);
+	DInsert(&list, 5); DInsert(&list, 6);
+	DInsert(&list, 7); DInsert(&list, 8);
+
+
+	if (DFirst(&list, &data))
+	{
+		printf_s("%d ", data);
+		for (int i = 0; i < DCount(&list) - 1; i++)
+		{
+			DNext(&list, &data);
+			printf_s("%d ", data);
+		}
+		printf_s("\n");
+
+		printf_s("%d ", data);
+		for (int i = 0; i < DCount(&list) - 1; i++)
+		{
+			DPrevious(&list, &data); // 만약 pre 가 nullptr이면 DPrevious가 취소되어 똑같은 값을 가지게 된다.
+			printf_s("%d ", data);
+		}
+	}
+	printf_s("\n");
+	if (DFirst(&list, &data))
+	{
+		if (data == 3)
+		{
+			DRemove(&list);
+		}
+		for (int i = 0; i < DCount(&list) - 1; i++)
+		{
+			DNext(&list, &data);
+			if (data == 3)
+			{
+				DRemove(&list);
+			}
+		}
+	}
+	printf_s("\n");
+	if (DFirst(&list, &data))
+	{
+		printf_s("%d ", data);
+		for (int i = 0; i < DCount(&list) - 1; i++)
+		{
+			DNext(&list, &data);
+			printf_s("%d ", data);
+		}
+		printf_s("\n");
+	}
+	std::cout << "\nEnd Of Main\n";
 }
